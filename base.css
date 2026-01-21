@@ -1,0 +1,459 @@
+/* ===============================
+   CSS RESET & VARIABLES
+================================ */
+
+
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+
+    min-height: 100vh;
+    color: var(--text-main);
+
+    background:
+        radial-gradient(circle at top, #ffffff, #e9eef6);
+
+    opacity: 1;
+    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+:root {
+  /* Default = BRIGHT */
+  --bg-main: #f4f7fb;
+  --bg-card: #ffffff;
+  --text-main: #1a1a1a;
+  --text-muted: #555;
+
+  --primary: #0077ff;
+  --secondary: #00bcd4;
+
+  --shadow-soft: 0 15px 30px rgba(0, 0, 0, 0.12);
+  --shadow-deep: 0 30px 60px rgba(0, 0, 0, 0.25);
+}
+
+/* 🌙 DARK PREMIUM THEME */
+html[data-theme="dark"] {
+  --bg-main: #0b1524;
+  --bg-card: rgba(255,255,255,0.08);
+  --text-main: #ffffff;
+  --text-muted: #cfd6e0;
+
+  --primary: #4da3ff;
+  --secondary: #8fd3f4;
+
+  --shadow-soft: 0 20px 40px rgba(0, 0, 0, 0.6);
+  --shadow-deep: 0 40px 80px rgba(0, 0, 0, 0.85);
+}
+
+
+
+/* Dark theme background */
+html[data-theme="dark"] body {
+    background:
+        radial-gradient(circle at top, #16263f, #0b1524 65%),
+        linear-gradient(120deg, #0b1524, #02040a);
+}
+
+main,
+section,
+.content-card,
+.project-image {
+    position: relative;
+    z-index: 5;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image:
+        repeating-linear-gradient(
+            45deg,
+            rgba(255,255,255,0.03),
+            rgba(255,255,255,0.03) 1px,
+            transparent 1px,
+            transparent 60px
+        );
+    pointer-events: none;
+    z-index: 0;
+}
+
+
+/* ===============================
+   NAV / HEADER (COMMON)
+================================ */
+header {
+    padding: 25px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav a {
+    margin-left: 20px;
+    text-decoration: none;
+    font-weight: 500;
+    color: var(--text-main);
+}
+
+nav a:hover {
+    color: var(--primary);
+}
+
+/* ===============================
+   SECTION CARD (3D PREMIUM)
+================================ */
+section {
+    max-width: 1200px;
+    margin: 80px auto;
+    padding: 50px;
+
+    background: linear-gradient(
+        135deg,
+        rgba(255,255,255,0.16),
+        rgba(255,255,255,0.06)
+    );
+
+    backdrop-filter: blur(18px);
+    border-radius: 22px;
+
+    box-shadow: var(--shadow-soft);
+    transition: transform 0.6s ease, box-shadow 0.6s ease;
+}
+
+section:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-deep);
+}
+
+/* ===============================
+   SECTION TITLE
+================================ */
+.section-title h2 {
+    font-size: 2.4rem;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+}
+
+.section-title p {
+    color: var(--text-muted);
+}
+
+/* ===============================
+   LIST STYLING
+================================ */
+ul {
+    list-style: none;
+    margin-top: 15px;
+}
+
+ul li {
+    padding: 6px 0;
+    color: var(--text-muted);
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+@media (max-width: 768px) {
+    section {
+        padding: 30px;
+        margin: 50px 15px;
+    }
+}
+
+nav a.active {
+    color: var(--primary);
+    font-weight: 600;
+    border-bottom: 2px solid var(--primary);
+}
+
+footer {
+    margin-top: auto;
+    text-align: center;
+}
+
+/* Theme switcher – top right */
+.theme-switcher {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+    z-index: 1000;
+}
+
+/* Icon buttons */
+.theme-switcher button {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    background: var(--bg-card);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.theme-switcher button:hover {
+    transform: scale(1.1);
+}
+
+/* ===============================
+   PAGE FADE TRANSITIONS
+================================ */
+
+body {
+    opacity: 1;
+    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.fade-out {
+    opacity: 0;
+}
+
+/* ===============================
+   HERO TEXT SECTION (FULL WIDTH)
+================================ */
+
+.page-hero {
+    max-width: 1200px;
+    margin: 120px auto 60px auto;
+    padding: 0 60px;
+}
+
+.page-hero h1::after {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 4px;
+    margin-top: 16px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    border-radius: 4px;
+}
+
+.page-hero p {
+    font-size: 1.25rem;
+    line-height: 1.9;
+    max-width: 900px;
+    color: var(--text-muted);
+}
+
+/* ===============================
+   CONTENT GLASS CARD (HOVER)
+================================ */
+
+.content-card {
+    max-width: 1100px;
+    margin: 60px auto;
+    padding: 45px 55px;
+
+    background: linear-gradient(
+        135deg,
+        rgba(255,255,255,0.16),
+        rgba(255,255,255,0.06)
+    );
+
+    backdrop-filter: blur(18px);
+    border-radius: 26px;
+
+    box-shadow: var(--shadow-soft);
+    transition: transform 0.6s ease, box-shadow 0.6s ease;
+}
+
+.content-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-deep);
+}
+
+.content-card h2 {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+}
+
+.content-card p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-muted);
+}
+
+/* ===============================
+   PROJECT IMAGE (PROFESSIONAL)
+================================ */
+
+/* ===============================
+   PROJECT IMAGE (CONTROLLED & CLEAN)
+================================ */
+
+.project-image {
+    position: relative;
+    margin: 30px 0 40px;
+    border-radius: 18px;
+    overflow: hidden;
+}
+
+.project-image img {
+    display: block;
+    width: 100%;
+    max-width: 900px;     /* ⬅ limits width */
+    max-height: 420px;    /* ⬅ limits height */
+    margin: 0 auto;
+
+    object-fit: cover;   /* ⬅ prevents stretching */
+    border-radius: 18px;
+
+    transition: transform 0.45s ease, box-shadow 0.45s ease;
+}
+
+/* Hover effect – subtle & safe */
+.project-image:hover img {
+    transform: scale(1.03);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.45);
+}
+
+* {
+    font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* ===============================
+   PROFESSIONAL TYPOGRAPHY
+================================ */
+
+/* Main page titles */
+.page-hero h1,
+.content-card h2,
+section > h1,
+section > h2 {
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+/* Big section headings */
+.page-hero h1 {
+    font-size: clamp(3rem, 6vw, 4.2rem);
+    line-height: 1.1;
+}
+
+/* Card titles */
+.content-card h2 {
+    font-size: 2.2rem;
+}
+
+/* Sub-section titles */
+.content-card h3,
+.content-card h4 {
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.3px;
+}
+
+/* Paragraph text */
+p {
+    font-size: 1.1rem;
+    line-height: 1.85;
+}
+
+/* ===============================
+   BACK TO HOME (GLOBAL)
+================================ */
+
+.back-home {
+    position: fixed;
+    bottom: 24px;
+    left: 24px;
+
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+
+    color: var(--text-muted);
+    background: rgba(255, 255, 255, 0.75);
+
+    padding: 10px 16px;
+    border-radius: 12px;
+
+    backdrop-filter: blur(12px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+/* Hover effect */
+.back-home:hover {
+    color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+}
+
+/* Dark theme fix */
+html[data-theme="dark"] .back-home {
+    background: rgba(20, 25, 40, 0.85);
+    color: var(--text-muted);
+}
+
+.background-shapes {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.background-shapes span {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, #dbeafe, transparent 70%);
+    filter: blur(60px);
+    animation: float 18s infinite linear;
+}
+
+.background-shapes span:nth-child(1) {
+    top: 10%;
+    left: 5%;
+}
+
+.background-shapes span:nth-child(2) {
+    top: 50%;
+    left: 60%;
+    animation-duration: 22s;
+}
+
+.background-shapes span:nth-child(3) {
+    top: 80%;
+    left: 30%;
+    animation-duration: 26s;
+}
+
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-40px); }
+    100% { transform: translateY(0); }
+}
