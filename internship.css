@@ -73,14 +73,23 @@
 ================================ */
 
 @media (max-width: 900px) {
-    .internship-grid {
-        grid-template-columns: 1fr;
+    .internship-content,
+    .internship-image {
+        animation: internshipMobileIn 0.8s ease forwards;
     }
 
-    .internship-image {
-        margin-top: 30px;
+    @keyframes internshipMobileIn {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
 }
+
 
 .background-shapes {
     position: fixed;
@@ -119,4 +128,49 @@
     0% { transform: translateY(0); }
     50% { transform: translateY(-40px); }
     100% { transform: translateY(0); }
+}
+
+/* ===============================
+   INTERNSHIP ENTRANCE ANIMATIONS
+================================ */
+
+/* Initial hidden state */
+.internship-content,
+.internship-image {
+    opacity: 0;
+}
+
+/* Left content animation */
+.internship-content {
+    animation: internshipLeftIn 0.9s ease forwards;
+    animation-delay: 0.2s;
+}
+
+/* Right image animation */
+.internship-image {
+    animation: internshipRightIn 0.9s ease forwards;
+    animation-delay: 0.4s;
+}
+
+/* Keyframes */
+@keyframes internshipLeftIn {
+    from {
+        opacity: 0;
+        transform: translateX(-40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes internshipRightIn {
+    from {
+        opacity: 0;
+        transform: translateX(40px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
 }
