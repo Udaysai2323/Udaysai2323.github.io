@@ -14,8 +14,14 @@
     width: 100%;
     border-radius: 18px;
     box-shadow: 0 25px 60px rgba(0,0,0,0.35);
+
+    opacity: 0;
+    animation: certImageIn 0.9s ease forwards;
+    animation-delay: 0.2s;
+
     transition: transform 0.5s ease, box-shadow 0.5s ease;
 }
+
 
 .certificate-image img:hover {
     transform: scale(1.04);
@@ -23,6 +29,13 @@
 }
 
 /* CONTENT */
+
+.certificate-content {
+    opacity: 0;
+    animation: certContentIn 0.9s ease forwards;
+    animation-delay: 0.45s;
+}
+
 .certificate-content h2 {
     font-family: "Space Grotesk", sans-serif;
     font-size: 2rem;
@@ -55,7 +68,16 @@
     .certificate-card {
         grid-template-columns: 1fr;
     }
+
+    .certificate-image img {
+        animation-delay: 0.15s;
+    }
+
+    .certificate-content {
+        animation-delay: 0.3s;
+    }
 }
+
 
 .background-shapes {
     position: fixed;
@@ -94,4 +116,30 @@
     0% { transform: translateY(0); }
     50% { transform: translateY(-40px); }
     100% { transform: translateY(0); }
+}
+
+/* ===============================
+   CERTIFICATION ENTRANCE ANIMATIONS
+================================ */
+
+@keyframes certImageIn {
+    from {
+        opacity: 0;
+        transform: translateX(-40px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+}
+
+@keyframes certContentIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
